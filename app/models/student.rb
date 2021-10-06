@@ -6,7 +6,7 @@ class Student < ApplicationRecord
 
   def self.by_name(name)
     Student.all.select do |student|
-      student.first_name == name || student.last_name == name
+      student.first_name.downcase == name.downcase || student.last_name.downcase == name.downcase
     end
   end
 
