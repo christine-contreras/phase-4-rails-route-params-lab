@@ -5,4 +5,21 @@ class StudentsController < ApplicationController
     render json: students
   end
 
+  def grades 
+    students = Student.all.order(grade: :desc)
+    render json: students
+  end
+
+  def highest_grade
+      student = Student.all.max_by {|student| student.grade}
+      render json: student
+  end
+
+  def show
+    student = Student.find_by_id(params[:id])
+    render json: student
+  end
+
+
+
 end
